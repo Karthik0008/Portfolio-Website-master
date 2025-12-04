@@ -1,786 +1,1249 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>karthik Portfolio</title>
-    <link rel="stylesheet" href="assets/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="assets/newcss.css" />
-    <link
-      rel="stylesheet"
-      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
-    />
-  </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karthik U - Portfolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
-  <body oncontextmenu="return false">
+        :root {
+            --header-height: 3rem;
+            --hue-color: 240;
+            --first-color: hsl(var(--hue-color), 69%, 61%);
+            --first-color-alt: hsl(var(--hue-color), 57%, 53%);
+            --first-color-lighter: hsl(var(--hue-color), 92%, 85%);
+            --title-color: hsl(var(--hue-color), 8%, 15%);
+            --text-color: hsl(var(--hue-color), 8%, 45%);
+            --text-color-light: hsl(var(--hue-color), 8%, 65%);
+            --input-color: hsl(var(--hue-color), 70%, 96%);
+            --body-color: hsl(var(--hue-color), 60%, 99%);
+            --container-color: #fff;
+            --body-font: 'Poppins', sans-serif;
+            --big-font-size: 2rem;
+            --h1-font-size: 1.5rem;
+            --h2-font-size: 1.25rem;
+            --h3-font-size: 1.125rem;
+            --normal-font-size: 0.938rem;
+            --small-font-size: 0.813rem;
+            --font-medium: 500;
+            --font-semi-bold: 600;
+            --mb-0-25: 0.25rem;
+            --mb-0-5: 0.5rem;
+            --mb-1: 1rem;
+            --mb-1-5: 1.5rem;
+            --mb-2: 2rem;
+            --mb-2-5: 2.5rem;
+            --mb-3: 3rem;
+        }
+
+        body.dark-theme {
+            --first-color: hsl(var(--hue-color), 69%, 61%);
+            --title-color: hsl(var(--hue-color), 8%, 95%);
+            --text-color: hsl(var(--hue-color), 8%, 75%);
+            --body-color: hsl(var(--hue-color), 28%, 12%);
+            --container-color: hsl(var(--hue-color), 29%, 16%);
+        }
+
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--body-font);
+            font-size: var(--normal-font-size);
+            background-color: var(--body-color);
+            color: var(--text-color);
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--title-color);
+            font-weight: var(--font-semi-bold);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .section {
+            padding: 3rem 0;
+        }
+
+        .section__title {
+            font-size: var(--h1-font-size);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .section__subtitle {
+            font-size: var(--small-font-size);
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-color-light);
+        }
+
+        .container {
+            max-width: 968px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .header {
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            background-color: var(--body-color);
+            border-top: 1px solid var(--first-color-lighter);
+        }
+
+        .nav {
+            max-width: 968px;
+            margin: 0 auto;
+            height: var(--header-height);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1.5rem;
+        }
+
+        .nav__logo {
+            color: var(--title-color);
+            font-weight: var(--font-medium);
+            cursor: pointer;
+        }
+
+        .nav__list {
+            display: flex;
+            column-gap: 2rem;
+        }
+
+        .nav__link {
+            color: var(--text-color);
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .nav__link:hover, .nav__link.active-link {
+            color: var(--first-color);
+        }
+
+        .nav__toggle, .nav__close {
+            display: none;
+            font-size: 1.3rem;
+            cursor: pointer;
+            color: var(--title-color);
+        }
+
+        .change-theme {
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--title-color);
+            margin-left: auto;
+            transition: 0.3s;
+        }
+
+        .change-theme:hover {
+            color: var(--first-color);
+        }
+
+        .main {
+            margin-bottom: 4rem;
+        }
+
+        /* HOME SECTION */
+        .home {
+            padding-top: 6rem;
+        }
+
+        .home__container {
+            gap: 2rem;
+        }
+
+        .home__content {
+            display: grid;
+            grid-template-columns: 0.5fr 3fr;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .home__social {
+            display: grid;
+            grid-template-columns: max-content;
+            gap: 1rem;
+        }
+
+        .home__social-icon {
+            font-size: 1.5rem;
+            color: var(--first-color);
+            transition: 0.3s;
+        }
+
+        .home__social-icon:hover {
+            color: var(--first-color-alt);
+            transform: translateY(-2px);
+        }
+
+        .home__title {
+            font-size: var(--big-font-size);
+            margin-bottom: 0.5rem;
+        }
+
+        .home__subtitle {
+            font-size: var(--h3-font-size);
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        .home__description {
+            margin-bottom: 1.5rem;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: var(--first-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: var(--font-medium);
+            cursor: pointer;
+            transition: 0.3s;
+            border: none;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: var(--first-color-alt);
+            transform: translateY(-2px);
+        }
+
+        .button--white {
+            background-color: white;
+            color: var(--first-color);
+        }
+
+        /* ABOUT SECTION */
+        .about__container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about__img {
+            width: 200px;
+            border-radius: 50%;
+            justify-self: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .about__description {
+            text-align: justify;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .about__info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .about__info-item {
+            text-align: center;
+        }
+
+        .about__info-title {
+            font-size: var(--h2-font-size);
+            color: var(--first-color);
+            font-weight: var(--font-semi-bold);
+        }
+
+        .about__info-name {
+            font-size: var(--small-font-size);
+            color: var(--text-color-light);
+        }
+
+        /* SKILLS SECTION */
+        .skills__container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .skills__content {
+            background-color: var(--container-color);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .skills__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            margin-bottom: 1rem;
+        }
+
+        .skills__title {
+            font-size: var(--h3-font-size);
+            color: var(--title-color);
+        }
+
+        .skills__icon {
+            font-size: 1.25rem;
+            color: var(--first-color);
+        }
+
+        .skills__list {
+            row-gap: 1rem;
+        }
+
+        .skills__name {
+            font-size: var(--normal-font-size);
+            font-weight: var(--font-medium);
+            margin-bottom: 0.3rem;
+        }
+
+        .skills__bar {
+            height: 5px;
+            background-color: var(--first-color-lighter);
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        .skills__percentage {
+            height: 100%;
+            background-color: var(--first-color);
+            border-radius: 0.5rem;
+        }
+
+        /* QUALIFICATIONS SECTION */
+        .qualification__tabs {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .qualification__button {
+            font-size: var(--h3-font-size);
+            font-weight: var(--font-medium);
+            cursor: pointer;
+            color: var(--text-color);
+            transition: 0.3s;
+            border-bottom: 3px solid transparent;
+            padding-bottom: 0.5rem;
+        }
+
+        .qualification__button:hover, .qualification__button.qualification__active {
+            color: var(--first-color);
+            border-bottom-color: var(--first-color);
+        }
+
+        .qualification__content {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .qualification__data {
+            display: grid;
+            grid-template-columns: 1fr max-content 1fr;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .qualification__title {
+            font-size: var(--normal-font-size);
+            font-weight: var(--font-medium);
+        }
+
+        .qualification__subtitle {
+            font-size: var(--small-font-size);
+            color: var(--text-color-light);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .qualification__calendar {
+            font-size: var(--small-font-size);
+            color: var(--text-color-light);
+        }
+
+        .qualification__rounder {
+            width: 13px;
+            height: 13px;
+            background-color: var(--first-color);
+            border-radius: 50%;
+            justify-self: center;
+        }
+
+        .qualification__line {
+            width: 1px;
+            height: 100%;
+            background-color: var(--first-color);
+            justify-self: center;
+        }
+
+        /* PROJECTS SECTION */
+        .project__container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project__card {
+            background-color: var(--container-color);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+
+        .project__card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .project__img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, var(--first-color), var(--first-color-alt));
+        }
+
+        .project__data {
+            padding: 1.5rem;
+        }
+
+        .project__title {
+            font-size: var(--h3-font-size);
+            margin-bottom: 0.5rem;
+        }
+
+        .project__description {
+            font-size: var(--small-font-size);
+            color: var(--text-color-light);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .project__links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project__link {
+            font-size: 0.85rem;
+            color: var(--first-color);
+            font-weight: var(--font-medium);
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .project__link:hover {
+            color: var(--first-color-alt);
+        }
+
+        /* SERVICES SECTION */
+        .services__container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .services__content {
+            background-color: var(--container-color);
+            padding: 2rem 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .services__content:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .services__icon {
+            font-size: 2.5rem;
+            color: var(--first-color);
+            margin-bottom: 1rem;
+        }
+
+        .services__title {
+            font-size: var(--h3-font-size);
+            margin-bottom: 0.5rem;
+        }
+
+        /* CONTACT SECTION */
+        .contact__container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .contact__information {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact__info-item {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .contact__icon {
+            font-size: 1.5rem;
+            color: var(--first-color);
+            margin-top: 0.3rem;
+        }
+
+        .contact__title {
+            font-size: var(--h3-font-size);
+            font-weight: var(--font-medium);
+            margin-bottom: 0.3rem;
+        }
+
+        .contact__subtitle {
+            font-size: var(--small-font-size);
+            color: var(--text-color-light);
+        }
+
+        .contact__form {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: grid;
+        }
+
+        .form-label {
+            font-size: var(--small-font-size);
+            font-weight: var(--font-medium);
+            margin-bottom: 0.3rem;
+        }
+
+        .form-input, .form-textarea {
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--input-color);
+            border-radius: 0.5rem;
+            background-color: var(--input-color);
+            font-family: var(--body-font);
+            font-size: var(--normal-font-size);
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            border-color: var(--first-color);
+            background-color: var(--container-color);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* FOOTER */
+        .footer {
+            background-color: var(--first-color-alt);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer__content {
+            max-width: 968px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .footer__title {
+            font-size: var(--h2-font-size);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer__social {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .footer__social-link {
+            font-size: 1.3rem;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .footer__social-link:hover {
+            transform: translateY(-3px);
+        }
+
+        .footer__copy {
+            font-size: var(--smaller-font-size);
+            margin-top: 1.5rem;
+            opacity: 0.8;
+        }
+
+        .scroll-up {
+            position: fixed;
+            right: 1rem;
+            bottom: 5rem;
+            background-color: var(--first-color);
+            color: white;
+            padding: 0.4rem 0.5rem;
+            border-radius: 0.4rem;
+            font-size: 1.3rem;
+            cursor: pointer;
+            z-index: 50;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+        }
+
+        .scroll-up.show-scroll {
+            opacity: 1;
+            visibility: visible;
+            bottom: 5rem;
+        }
+
+        .scroll-up:hover {
+            background-color: var(--first-color-alt);
+        }
+
+        /* MEDIA QUERIES */
+        @media (max-width: 768px) {
+            .header {
+                bottom: 0;
+            }
+
+            .main {
+                margin-bottom: 4rem;
+            }
+
+            .nav__list {
+                display: none;
+            }
+
+            .nav__toggle {
+                display: block;
+            }
+
+            .home__content {
+                grid-template-columns: 1fr;
+            }
+
+            .home__social {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 0.5rem;
+                width: 100%;
+            }
+
+            .about__container, .contact__container {
+                grid-template-columns: 1fr;
+            }
+
+            .skills__container {
+                grid-template-columns: 1fr;
+            }
+
+            .qualification__data {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .section {
+                padding: 2rem 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section__title {
+                font-size: var(--h2-font-size);
+            }
+
+            .project__container, .services__container {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
     <header class="header" id="header">
-      <nav class="nav container">
-        <a href="#" class="nav__logo">Karthik U</a>
-        <div class="nav__menu" id="nav-menu">
-          <ul class="nav__list grid">
-            <li class="nav__item">
-              <a href="#home" class="nav__link active-link">
-                <i class="uil uil-estate nav__icon"></i>Home
-              </a>
-            </li>
-            <li class="nav__item">
-              <a href="#about" class="nav__link">
-                <i class="uil uil-user nav__icon"></i>About
-              </a>
-            </li>
-            <li class="nav__item">
-              <a href="#skills" class="nav__link">
-                <i class="uil uil-file-alt nav__icon"></i>Skills
-              </a>
-            </li>
-            <li class="nav__item">
-              <a href="#qualification" class="nav__link">
-                <i class="uil uil-briefcase-alt nav__icon"></i>Qualification
-              </a>
-            </li>
-            <li class="nav__item">
-              <a href="#portfolio" class="nav__link">
-                <i class="uil uil-scenery nav__icon"></i>Projects
-              </a>
-            </li>
-            <li class="nav__item">
-              <a href="#contact" class="nav__link">
-                <i class="uil uil-message nav__icon"></i>Contact-Me
-              </a>
-            </li>
-          </ul>
-          <i class="uil uil-times nav__close" id="nav-close"></i>
-        </div>
-        <div class="nav__btns">
-          <!-- Theme change button -->
-          <i class="uil uil-moon change-theme" id="theme-button"></i>
-
-          <div class="nav__toggle" id="nav-toggle">
-            <i class="uil uil-apps"></i>
-          </div>
-        </div>
-      </nav>
+        <nav class="nav container">
+            <a href="#" class="nav__logo">Karthik U</a>
+            <div class="nav__menu" id="nav-menu">
+                <a href="#home" class="nav__link">Home</a>
+                <a href="#about" class="nav__link">About</a>
+                <a href="#skills" class="nav__link">Skills</a>
+                <a href="#projects" class="nav__link">Projects</a>
+                <a href="#contact" class="nav__link">Contact</a>
+            </div>
+            <i class="ri-moon-line change-theme" id="theme-button"></i>
+        </nav>
     </header>
-    <!-- main-->
 
+    <!-- MAIN -->
     <main class="main">
-      <!--========================= Home =====================-->
-
-      <section class="home section" id="home">
-        <div class="home__container container grid">
-          <div class="home__content grid">
-            <div class="home__social">
-              <a
-                href="linkedin.com/in/karthikudhyan001"
-                target="_blank"
-                class="home__social-icon"
-              >
-                <i class="uil uil-linkedin-alt home__icon"></i>
-              </a>
-
-              <a
-                href="https://github.com/Karthik0008"
-                target="_blank"
-                class="home__social-icon"
-              >
-                <i class="uil uil-github-alt home__icon"></i>
-              </a>
-            </div>
-            <div class="home__img">
-              <svg
-                class="home__blob"
-                viewBox="0 0 200 187"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-              >
-                <mask id="mask0" mask-type="alpha">
-                  <path
-                    d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 165.547 
-                      130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 129.362C2.45775 
-                      97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 -0.149132 97.9666 
-                      0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"
-                  />
-                </mask>
-                <g mask="url(#mask0)">
-                  <path
-                    d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 
-                      165.547 130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 
-                      129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 
-                     -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"
-                  />
-                  <image
-                    class="home__blob-img"
-                    x="-59"
-                    y="-30"
-                    xlink:href="assets/img/karthik.jpg"
-                  />
-                </g>
-              </svg>
-            </div>
-            <div class="home__data">
-              <h1 class="home__title">Hi, I'm Karthik U</h1>
-              <h3 class="home__subtitle">
-                Bachelor of Computer Applications Graduate Aspiring to be a Software Developer
-              </h3>
-             
-              <a href="#contact" class="button button--flex">
-                Contact me<i class="uil uil-message button__icon"></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="home__scroll">
-            <a href="#about" class="home__scroll-button button--flex">
-              <i class="uil uil-mouse-alt home__scroll-mouse"></i>
-              <span class="home__scroll-name">Scroll down</span>
-              <i class="uil uil-arrow-down home__scroll-arrow"></i>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!--======================= About========================-->
-
-      <section class="about section" id="about">
-        <h2 class="section__title">About Me</h2>
-        <span class="section__subtitle">My introduction</span>
-
-        <div class="about__container container grid">
-          <img src="assets\img\about.jpg" alt="" class="about__img" />
-
-          <div class="about__data">
-            <p class="about__description">
-              A passionate and dedicated Bachelor of Computer Applications graduate with a strong foundation in software development. Eager to contribute to innovative projects and collaborate with talented teams.
-            </p>
-
-            <div class="about__info">
-              <div>
-                <span class="about__info-title">06.30+</span>
-                <span class="about__info-name">Aggregate <br />CGPA</span>
-              </div>
-
-              <div>
-                <span class="about__info-title">04+</span>
-                <span class="about__info-name"
-                  >
-                  Projects</span
-                >
-              </div>
-            </div>
-
-            <div class="about__buttons">
-              <a download="" href="assets\img\Karthik-Resume.pdf" class="button button--flex">
-                Download Resume<i class="fas fa-download button__icon"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!--===================== SKILLS =====================-->
-
-      <section class="skills section" id="skills">
-        <h2 class="section__title">Skills</h2>
-        <span class="section__subtitle">My technical level</span>
-
-        <div class="skills__container container grid">
-          <div>
-            <!--==================== Skill 1 =================-->
-            <div class="skills__content skills__open">
-              <div class="skills__header">
-                <i class="fas fa-pencil-ruler skills__icon"></i>
-
-                <div>
-                  <h1 class="skills__title">Programming Languages</h1>
+        <!-- HOME SECTION -->
+        <section class="home section" id="home">
+            <div class="home__container container grid">
+                <div class="home__content">
+                    <div class="home__social">
+                        <a href="https://github.com" target="_blank" class="home__social-icon">
+                            <i class="ri-github-fill"></i>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" class="home__social-icon">
+                            <i class="ri-linkedin-box-fill"></i>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" class="home__social-icon">
+                            <i class="ri-twitter-fill"></i>
+                        </a>
+                    </div>
+                    <div>
+                        <h1 class="home__title">Hi, I'm Karthik U</h1>
+                        <h3 class="home__subtitle">BCA Graduate | Full-Stack Developer & Data Scientist</h3>
+                        <p class="home__description">Recent BCA graduate with expertise in full-stack development and data science. Strong foundation in building scalable applications and analyzing complex datasets.</p>
+                        <a href="#contact" class="button">Contact Me</a>
+                    </div>
                 </div>
+            </div>
+        </section>
 
-                <i class="uil uil-angle-down skills__arrow"></i>
-              </div>
-              
-
-              <div class="skills__list grid">
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">HTML</h3>
-                  </div>
-                  
-                </div>
+        <!-- ABOUT SECTION -->
+        <section class="about section" id="about">
+            <div class="container">
+                <h2 class="section__title">About Me</h2>
+                <p class="section__subtitle">My introduction</p>
                 
-                  <div class="skills__data">
-                    <div class="skills__titles">
-                      <h3 class="skills__name">CSS</h3>
+                <div class="about__container">
+                    <div>
+                        <img src="assets/img/karthik.jpg" alt="Profile" class="about__img">
                     </div>
-                    
-                  </div>
-                  <div class="skills__data">
-                    <div class="skills__titles">
-                      <h3 class="skills__name">JavaScript</h3>
-                    </div>
-                    
-                  </div>
-                  <div class="skills__data">
-                    <div class="skills__titles">
-                      <h3 class="skills__name">JAVA</h3>
-                    </div>
-                   
-                  </div>
-                  <div class="skills__data">
-                    <div class="skills__titles">
-                      <h3 class="skills__name">PYTHON</h3>
-                    </div>
-                  </div>
-
-
-
-                </div>
-                
-                
-              </div>
-            </div>
-
-            <!--==================== Skill 2 =================-->
-            <div class="skills__content skills__close">
-              <div class="skills__header">
-                <i class="fas fa-code skills__icon"></i>
-
-                <div>
-                  <h1 class="skills__title">IT Constructs</h1>
-                </div>
-
-                <i class="uil uil-angle-down skills__arrow"></i>
-              </div>
-
-              <div class="skills__list grid">
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">DBMS</h3>
-                  </div>
-                  
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">DS & Algorithms</h3>
-                  </div>
-                  
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">OOP</h3>
-                  </div>
-                  
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">OS</h3>
-                  </div>
-                  
-                </div>
-                
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <!--==================== Skill 3 =================-->
-            <div class="skills__content skills__close">
-              <div class="skills__header">
-                <i class="fas fa-swatchbook skills__icon"></i>
-                <div>
-                  <h1 class="skills__title">Technologies</h1>
-                </div>
-
-                <i class="uil uil-angle-down skills__arrow"></i>
-              </div>
-
-              <div class="skills__list grid">
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">Git</h3>
-                  </div>
-                  
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">MongoDB</h3>
-                  </div>
-                  
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">MySQL</h3>
-                  </div>
-                  
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">NextJs</h3>
-                  </div>
-                  
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">NodeJs</h3>
-                  </div>
-                  
-                </div>
-                
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">Tailwind</h3>
-                  </div>
-
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">Bootstrap</h3>
-                  </div>
-                  
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">Spring Boot</h3>
-                  </div>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!--==================== Qualifications ==================-->
-
-      <section
-        class="qualification__section service__section"
-        id="qualification"
-      >
-        <h2 class="section__title">Qualification</h2>
-        <span class="section__subtitle">My personal journey</span>
-
-        <div
-          class="qualification__container container grid services__container"
-        >
-          <div class="qualification__tabs">
-            <div
-              class="qualification__button button--flex qualification__active"
-              data-target="#education"
-            >
-              <i class="uil uil-graduation-cap qualification__icon"></i>
-              Education
-            </div>
-          </div>
-
-          <div class="qualification__sections">
-            <!--====== Qualification Content 1 ======-->
-            <div
-              class="qualification__content qualifiation__active services__content"
-              data-content
-              id="education"
-            >
-              <!--====== Qualification 1 ======-->
-              <div class="qualification__data">
-                <div>
-                  <h3 class="qualification__title">SSLC</h3>
-                  <span class="qualification__subtitle"
-                    >Govt Boys higher Secondary School Porur
-                  >
-                  <div class="qualification__calender">
-                    <i class="uil uil-calendar-alt"></i>
-                    - 2020
-                  </div>
-                  <span
-                    class="button button--flex button--small button--link services__button"
-                  >
-                    View More
-                    <i class="uil uil-arrow-right button__icon"></i>
-                  </span>
-                  <div class="services__modal">
-                    <div class="services__modal-content">
-                      <h4 class="services__modal-title">
-                        Class 10th Summary :
-                      </h4>
-                      <i class="uil uil-times services__modal-close"></i>
-                      <ul class="services__modal-services grid">
-                        <li class="services__modal-service">
-                          <i
-                            class="uil uil-check-circle services__moda-icon"
-                          ></i>
-                          <p>
-                            Subjects studied: Science, Maths, English,
-                            Social Studies,Tamil.
-                          </p>
-                        </li>
-                        <li class="services__modal-service">
-                          <i
-                            class="uil uil-check-circle services__moda-icon"
-                          ></i>
-                          <p>Scored 51%</p>
-                        </li>
-                      
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <span class="qualification__rounder"></span>
-                  <span class="qualification__line"></span>
-                </div>
-              </div>
-
-              <!--====== Qualification 2 ======-->
-              <div class="qualification__data">
-                <div></div>
-
-                <div>
-                  <span class="qualification__rounder"></span>
-                  <span class="qualification__line"></span>
-                </div>
-                <div>
-                  <h3 class="qualification__title">Class 12th</h3>
-                  <span class="qualification__subtitle"
-                    >Govt Boys higher Secondary School Porur
-                  </span>
-                  <div class="qualification__calender">
-                    <i class="uil uil-calendar-alt"></i>
-                    - 2022
-                  </div>
-                  <span
-                    class="button button--flex button--small button--link services__button"
-                  >
-                    View More
-                    <i class="uil uil-arrow-right button__icon"></i>
-                  </span>
-                  <div class="services__modal">
-                    <div class="services__modal-content">
-                      <h4 class="services__modal-title">
-                        Class 12th Summary :
-                      </h4>
-                      <i class="uil uil-times services__modal-close"></i>
-                      <ul class="services__modal-services grid">
-                        <li class="services__modal-service">
-                          <i
-                            class="uil uil-check-circle services__moda-icon"
-                          ></i>
-                          <p>
-                            Subjects studied: Physics, Chemistry, Maths,
-                            English, Computer Science, Tamil.
-                          </p>
-                        </li>
-                        <li class="services__modal-service">
-                          <i
-                            class="uil uil-check-circle services__moda-icon"
-                          ></i>
-                          <p>Scored 51.5%</p>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!--====== Qualification 3 ======-->
-              <div class="qualification__data">
-                <div>
-                  <h3 class="qualification__title">College</h3>
-                  <span class="qualification__subtitle"
-                    >ST Thomas College of Arts & Science</span
-                  >
-                  <div class="qualification__calender">
-                    <i class="uil uil-calendar-alt"></i>
-                    2021 - 2025
-                  </div>
-                  <span
-                    class="button button--flex button--small button--link services__button"
-                  >
-                    View More
-                    <i class="uil uil-arrow-right button__icon"></i>
-                  </span>
-                  <div class="services__modal">
-                    <div class="services__modal-content">
-                      <h4 class="services__modal-title">College Summary :</h4>
-                      <i class="uil uil-times services__modal-close"></i>
-                      <ul class="services__modal-services grid">
-                        <li class="services__modal-service">
-                          <i
-                            class="uil uil-check-circle services__modal-icon"
-                          ></i>
-                          <p>
-                            Studying core subjects of IT including DSA, Embedded
-                            systems, Design analysis and algorithm, Operating
-                            systems, and Computer organization.
-                          </p>
-                        </li>
-                        <li class="services__modal-service">
-                          <i
-                            class="uil uil-check-circle services__modal-icon"
-                          ></i>
-                          <p>Scored an aggregate of 6.50 CGPA till now.</p>
-                        </li>
-                        <li class="services__modal-service">
-                      
+                    <div>
+                        <p class="about__description">Recent BCA graduate with a strong foundation in full-stack development and data science. Completed intensive data science internship at VCodez, gaining hands-on experience with machine learning, data analysis, and predictive modeling. Proficient in full-stack technologies through comprehensive FITA Academy coursework.</p>
                         
-                        </li>
-                       
+                        <div class="about__info">
+                            <div class="about__info-item">
+                                <span class="about__info-title">2025</span>
+                                <span class="about__info-name">Graduation Year</span>
+                            </div>
+                            <div class="about__info-item">
+                                <span class="about__info-title">6.2</span>
+                                <span class="about__info-name">CGPA</span>
+                            </div>
+                            <div class="about__info-item">
+                                <span class="about__info-title">5+</span>
+                                <span class="about__info-name">Projects</span>
+                            </div>
+                        </div>
                         
-                      </ul>
+                        <div>
+                            <a href="assets/img/KARTHIK-U--Resume-20251203.pdf" class="button">Download CV</a>
+                        </div>
                     </div>
-                  </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section class="skills section" id="skills">
+            <div class="container">
+                <h2 class="section__title">Skills</h2>
+                <p class="section__subtitle">My technical level</p>
+                
+                <div class="skills__container">
+                    <div class="skills__content">
+                        <div class="skills__header">
+                            <h3 class="skills__title">Technical Skills</h3>
+                            <i class="ri-chevron-down-line skills__icon"></i>
+                        </div>
+                        <div class="skills__list">
+                            <div>
+                                <p class="skills__name">HTML & CSS</p>
+                                <div class="skills__bar">
+                                    <div class="skills__percentage" style="width: 60%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="skills__name">JavaScript</p>
+                                <div class="skills__bar">
+                                    <div class="skills__percentage" style="width: 50%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="skills__name">React.js</p>
+                                <div class="skills__bar">
+                                    <div class="skills__percentage" style="width: 50%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="skills__name">Java</p>
+                                <div class="skills__bar">
+                                    <div class="skills__percentage" style="width: 50%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skills__content">
+                        <div class="skills__header">
+                            <h3 class="skills__title">Backend & Database</h3>
+                            <i class="ri-chevron-down-line skills__icon"></i>
+                        </div>
+                        <div class="skills__list">
+                            <div>
+                                <p class="skills__name">Spring Boot</p>
+                                <div class="skills__bar">
+                                    <div class="skills__percentage" style="width: 50%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="skills__name">MySQL</p>
+                                <div class="skills__bar">
+                                    <div class="skills__percentage" style="width: 85%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="skills__name">Python</p>
+                                <div class="skills__bar">
+                                    <div class="skills__percentage" style="width: 60%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="skills__name">Flask</p>
+                                <div class="skills__bar">
+                                    <div class="skills__percentage" style="width: 75%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skills__content">
+                        <div class="skills__header">
+                            <h3 class="skills__title">Data Science & ML</h3>
+                            <i class="ri-chevron-down-line skills__icon"></i>
+                        </div>
+                        <div class="skills__list">
+                            <div>
+                                <p class="skills__name">Machine Learning</p>
+                                <div class="skills__bar">
+                                    <div class="skills__percentage" style="width: 70%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="skills__name">Data Analysis</p>
+                                <div class="skills__bar">
+                                    <div class="skills__percentage" style="width: 62%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="skills__name">Power BI</p>
+                                <div class="skills__bar">
+                                    <div class="skills__percentage" style="width: 78%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="skills__name">Streamlit</p>
+                                <div class="skills__bar">
+                                    <div class="skills__percentage" style="width: 76%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skills__content">
+                        <div class="skills__header">
+                            <h3 class="skills__title">Soft Skills</h3>
+                            <i class="ri-chevron-down-line skills__icon"></i>
+                        </div>
+                        <div class="skills__list">
+                            <div>
+                                <p class="skills__name">Communication</p>
+                                <div class="skills__bar">
+                                    <div class="skills__percentage" style="width: 85%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="skills__name">Teamwork</p>
+                                <div class="skills__bar">
+                                    <div class="skills__percentage" style="width: 88%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="skills__name">Problem Solving</p>
+                                <div class="skills__bar">
+                                    <div class="skills__percentage" style="width: 90%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="skills__name">Adaptability</p>
+                                <div class="skills__bar">
+                                    <div class="skills__percentage" style="width: 87%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUALIFICATION SECTION -->
+        <section class="qualification section" id="qualification">
+            <div class="container">
+                <h2 class="section__title">Qualification</h2>
+                <p class="section__subtitle">My personal journey</p>
+
+                <div class="qualification__tabs">
+                    <button class="qualification__button qualification__active" data-target="education">
+                        <i class="ri-book-fill"></i> Education
+                    </button>
+                    <button class="qualification__button" data-target="experience">
+                        <i class="ri-briefcase-fill"></i> Experience
+                    </button>
                 </div>
 
-                <div>
-                  <span class="qualification__rounder"></span>
-                  <!--<span class="qualification__line"></span>-->
+                <div class="qualification__content">
+                    <div class="qualification__data">
+                        <div>
+                            <h3 class="qualification__title">Bachelor of Computer Applications</h3>
+                            <span class="qualification__subtitle">ST Thomas College of Arts & Science</span>
+                            <div class="qualification__calendar">
+                                <i class="ri-calendar-line"></i> 2022 - 2025
+                            </div>
+                        </div>
+                        <div class="qualification__rounder"></div>
+                        <div></div>
+                    </div>
+
+                    <div class="qualification__data">
+                        <div></div>
+                        <div class="qualification__rounder"></div>
+                        <div>
+                            <h3 class="qualification__title">Full-Stack Development Course</h3>
+                            <span class="qualification__subtitle">FITA Academy</span>
+                            <div class="qualification__calendar">
+                                <i class="ri-calendar-line"></i> 2025
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="qualification__data">
+                        <div>
+                            <h3 class="qualification__title">Data Science Internship</h3>
+                            <span class="qualification__subtitle">VCodez</span>
+                            <div class="qualification__calendar">
+                                <i class="ri-calendar-line"></i> 2025
+                            </div>
+                        </div>
+                        <div class="qualification__rounder"></div>
+                        <div></div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <!--=================== Portfolio ===================-->
-      <section class="portfolio section" id="portfolio">
-        <h2 class="section__title">Projects</h2>
-        <span class="section__subtitle">Most recent work</span>
+        <!-- PROJECTS SECTION -->
+        <section class="projects section" id="projects">
+            <div class="container">
+                <h2 class="section__title">Projects</h2>
+                <p class="section__subtitle">Most recent work</p>
 
-        <div class="portfolio__container container swiper-container">
-          <div class="swiper-wrapper">
-            <!-- ------------------------portfollio 1-------------------- -->
-            <div class="portfolio__content grid swiper-slide">
-              <img src="assets/img/p1.png" class="portfolio__img" />
+                <div class="project__container">
+                    <div class="project__card">
+                        <img src="assets/img/p1.png" alt="Music Application" class="project__img">
+                        <div class="project__data">
+                            <h3 class="project__title">Music Application</h3>
+                            <p class="project__description">A feature-rich music app allowing users to stream songs, create playlists, and discover new music with personalized recommendations.</p>
+                            <div class="project__links">
+                                <a href="https://github.com/Karthik0008/music_streaming_app.git" class="project__link">GitHub</a>
+                                
+                            </div>
+                        </div>
+                    </div>
 
-              <div class="portfolio__data">
-                <h3 class="portfolio__title">
-                  Music application
-                </h3>
-                <p class="portfolio__description">
-                  Music application is a project that allows users to listen to their favorite songs, create playlists, and discover new music. It features a user-friendly interface and utilizes advanced algorithms to recommend songs based on user preferences.
-                </p>
-                <a
-                  href="https://github.com/Karthik0008/music_streaming_app"
-                  class="button button--flex button--small portfolio__button"
-                >
-                  GitHub Repository
-                  <i class="uil uil-external-link-alt button__icon"></i>
-                </a>
-                <a
-                  href="https://github.com/Karthik0008/music_streaming_app"
-                  class="button button--flex button--small portfolio__button"
-                >
-                  See Live
-                  <i class="uil uil-external-link-alt button__icon"></i>
-                </a>
-              </div>
+                    <div class="project__card">
+                        <img src="assets/img/p2.png" alt="Salon Management" class="project__img">
+                        <div class="project__data">
+                            <h3 class="project__title">Salon Management System</h3>
+                            <p class="project__description">Complete salon operations platform with appointment scheduling, customer management, and service tracking capabilities.</p>
+                            <div class="project__links">
+                                <a href="https://github.com/Karthik0008/saloon.git" class="project__link">GitHub</a>
+                                <a href="https://karthik-unique.netlify.app/" class="project__link">Live Demo</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project__card">
+                        <img src="assets/img/credit.png" alt="Credit Scoring" class="project__img">
+                        <div class="project__data">
+                            <h3 class="project__title">Credit Scoring ML Model</h3>
+                            <p class="project__description">Machine learning model for predicting credit scores and loan default probability with interpretable results for banking applications.</p>
+                            <div class="project__links">
+                                <a href="https://github.com/Karthik0008/credit.git" class="project__link">GitHub</a>
+                                <a href="https://credit--scoring.streamlit.app/" class="project__link">Live Demo</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="project__card">
+                        <img src="https://via.placeholder.com/300x200?text=Handwritten+Digit" alt="Handwritten Digit" class="project__img">
+                        <div class="project__data">
+                            <h3 class="project__title">Handwritten Digit Recognition</h3>
+                            <p class="project__description">Deep learning project using TensorFlow to recognize and classify handwritten digits with high accuracy.</p>
+                            <div class="project__links">
+                                <a href="#" class="project__link">GitHub</a>
+                                <a href="#" class="project__link">Live Demo</a>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <!-- <div class="project__card">
+                        <img src="https://via.placeholder.com/300x200?text=Movie+Booking" alt="Movie Booking" class="project__img">
+                        <div class="project__data">
+                            <h3 class="project__title">Movie Booking Application</h3>
+                            <p class="project__description">Full-stack application for browsing movies, checking showtimes, and booking tickets with secure payment integration.</p>
+                            <div class="project__links">
+                                <a href="#" class="project__link">GitHub</a>
+                                <a href="#" class="project__link">Live Demo</a>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
             </div>
-            <!-- ------------------------portfollio 2-------------------- -->
+        </section>
 
-            <div class="portfolio__content grid swiper-slide">
-              <img src="assets/img/p2.png" class="portfolio__img" />
+        <!-- SERVICES SECTION -->
+        <section class="services section">
+            <div class="container">
+                <h2 class="section__title">Services</h2>
+                <p class="section__subtitle">What I can do for you</p>
 
-              <div class="portfolio__data">
-                <h3 class="portfolio__title">
-                  Saloon Management System
-                </h3>
-                <p class="portfolio__description">
-                  This project is a web application designed to manage salon
-                  operations efficiently. It includes features for appointment
-                  scheduling, customer management, and service tracking.
-                 
-                </p>
-                <a
-                  href="https://github.com/Karthik0008/saloon"
-                  class="button button--flex button--small portfolio__button"
-                >
-                  GitHub Repository
-                  <i class="uil uil-external-link-alt button__icon"></i>
-                </a>
-                <a
-                  href="https://karthik-unique.netlify.app/"
-                  class="button button--flex button--small portfolio__button"
-                >
-                  See Live
-                  <i class="uil uil-external-link-alt button__icon"></i>
-                </a>
-              </div>
+                <div class="services__container">
+                    <div class="services__content">
+                        <i class="ri-code-line services__icon"></i>
+                        <h3 class="services__title">Web Development</h3>
+                        <p>Building responsive and interactive web applications using modern frameworks like React.js and Spring Boot.</p>
+                    </div>
+
+                    <div class="services__content">
+                        <i class="ri-database-2-line services__icon"></i>
+                        <h3 class="services__title">Data Analysis</h3>
+                        <p>Analyzing complex datasets and creating insightful visualizations using Python, Power BI, and Streamlit.</p>
+                    </div>
+
+                    <div class="services__content">
+                        <i class="ri-robot-2-line services__icon"></i>
+                        <h3 class="services__title">Machine Learning</h3>
+                        <p>Developing ML models for predictive analytics, classification, and recommendation systems.</p>
+                    </div>
+
+                    <div class="services__content">
+                        <i class="ri-layout-grid-line services__icon"></i>
+                        <h3 class="services__title">UI/UX Design</h3>
+                        <p>Creating user-friendly and visually appealing interfaces with focus on user experience.</p>
+                    </div>
+
+                    <div class="services__content">
+                        <i class="ri-server-line services__icon"></i>
+                        <h3 class="services__title">Backend Development</h3>
+                        <p>Designing and building scalable backend systems with Java, Spring Boot, and MySQL.</p>
+                    </div>
+
+                    <div class="services__content">
+                        <i class="ri-file-presentation-line services__icon"></i>
+                        <h3 class="services__title">Consulting</h3>
+                        <p>Providing technical guidance and solutions for your software development projects.</p>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <!-- ------------------------portfollio 3-------------------- -->
-            <div class="portfolio__content grid swiper-slide">
-              <img src="assets/img/p3.png" class="portfolio__img" />
+        <!-- CONTACT SECTION -->
+        <section class="contact section" id="contact">
+            <div class="container">
+                <h2 class="section__title">Contact Me</h2>
+                <p class="section__subtitle">Get in touch with me</p>
 
-              <div class="portfolio__data">
-                <h3 class="portfolio__title">It services</h3>
-                <p class="portfolio__description">
-                  It services is a web app developed using react.js and
-                  tailwind css. It provides a platform for users to access
-                  various IT services, including software development,
-                  technical support, and IT consulting. The app features a user-friendly
-                  interface, allowing users to easily navigate and request services.
-                </p>
-                <a
-                  href="https://github.com/Karthik0008/QuantumLogic"
-                  class="button button--flex button--small portfolio__button"
-                >
-                  GitHub Repository
-                  <i class="uil uil-external-link-alt button__icon"></i>
-                </a>
-                <a
-                  href="https://quantumlogics.netlify.app/"
-                  class="button button--flex button--small portfolio__button"
-                >
-                  See Live
-                  <i class="uil uil-external-link-alt button__icon"></i>
-                </a>
-              </div>
+                <div class="contact__container">
+                    <div class="contact__information">
+                        <div class="contact__info-item">
+                            <i class="ri-mail-line contact__icon"></i>
+                            <div>
+                                <h3 class="contact__title">Email</h3>
+                                <p class="contact__subtitle">karthikudayan1@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="contact__info-item">
+                            <i class="ri-phone-line contact__icon"></i>
+                            <div>
+                                <h3 class="contact__title">Phone</h3>
+                                <p class="contact__subtitle">+91 90257 84894</p>
+                            </div>
+                        </div>
+
+                        <div class="contact__info-item">
+                            <i class="ri-map-pin-line contact__icon"></i>
+                            <div>
+                                <h3 class="contact__title">Location</h3>
+                                <p class="contact__subtitle">Chennai, India</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="contact__form">
+                        <div class="form-group">
+                            <label class="form-label">Name</label>
+                            <input type="text" class="form-input" placeholder="Your name">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-input" placeholder="Your email">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Message</label>
+                            <textarea class="form-textarea" placeholder="Your message"></textarea>
+                        </div>
+
+                        <button type="submit" class="button">Send Message</button>
+                    </form>
+                </div>
             </div>
-        
-          </div>
-
-          <!-- add arrows -->
-          <div class="swiper-button-next">
-            <i class="uil uil-angle-right-b swiper-portfolio-icon"></i>
-          </div>
-          <div class="swiper-button-prev">
-            <i class="uil uil-angle-left-b swiper-portfolio-icon"></i>
-          </div>
-          <!-- add pagination -->
-          <div class="swiper-pagination"></div>
-        </div>
-      </section>
-
-      <!--===================== Contact Me =====================-->
-      <section class="contact section" id="contact">
-        <h2 class="section__title">Contact Me</h2>
-        <span class="section__subtitle">Get in touch</span>
-
-        <div class="contact__container container grid">
-          <div>
-            <div class="contact__information">
-              <i class="uil uil-calling contact__icon"></i>
-
-              <div>
-                <h3 class="contact__title">Contact Me</h3>
-                <span class="contact__subtitle"
-                  ><a href="tel:9025784894"></a>9025784894</span
-                >
-              </div>
-            </div>
-
-            <div class="contact__information">
-              <i class="uil uil-envelope-minus contact__icon"></i>
-
-              <div>
-                <h3 class="contact__title">Email</h3>
-                <span class="contact__subtitle"
-                  >karthikudayan1@gmail.com</span
-                >
-              </div>
-            </div>
-
-            <div class="contact__information">
-              <i class="uil uil-map-marker contact__icon"></i>
-
-              <div>
-                <h3 class="contact__title">Location</h3>
-                <span class="contact__subtitle"
-                  >chennai, Tamil Nadu, India</span
-                >
-              </div>
-            </div>
-          </div>
-
-          <form action="" class="contact__form grid">
-            <div class="contact__inputs grid">
-              <div class="contact__content">
-                <label for="" class="content__label">Name</label>
-                <input type="text" class="contact__input" />
-              </div>
-
-              <div class="contact__content">
-                <label for="" class="content__label">Email</label>
-                <input type="Email" class="contact__input" />
-              </div>
-            </div>
-
-            <div class="contact__content">
-              <label for="" class="content__label">Message</label>
-              <textarea
-                name=""
-                id=""
-                cols="0"
-                rows="7"
-                class="contact__input"
-              ></textarea>
-            </div>
-
-            <div>
-              <a
-                href=" mailto: karthikudayan1@gmail.com?subject=Testing out mailto! &body=This is only a test!"
-                class="button button--flex"
-              >
-                Send Message
-                <i class="uil uil-message button__icon"></i>
-              </a>
-            </div>
-          </form>
-        </div>
-      </section>
+        </section>
     </main>
 
-    <!--================== Footer ===============-->
+    <!-- FOOTER -->
     <footer class="footer">
-      <div class="footer__bg">
-        <div class="footer__container container grid">
-          <div>
-            <h1 class="footer__title">Karthik U</h1>
-            <span class="footer__subtitle"
-              >Entry level Software Developer</span
-            >
-          </div>
+        <div class="footer__content">
+            <h2 class="footer__title">Karthik U</h2>
+            <p class="footer__subtitle">Full-Stack Developer | Data Scientist | ML Enthusiast</p>
+            
+            <div class="footer__social">
+                <a href="https://github.com" class="footer__social-link" target="_blank">
+                    <i class="ri-github-fill"></i>
+                </a>
+                <a href="https://linkedin.com" class="footer__social-link" target="_blank">
+                    <i class="ri-linkedin-box-fill"></i>
+                </a>
+                <a href="https://twitter.com" class="footer__social-link" target="_blank">
+                    <i class="ri-twitter-fill"></i>
+                </a>
+            </div>
 
-          <ul class="footer__links">
-            <li>
-              <a href="#qualification" class="footer__link">Qualification</a>
-            </li>
-            <li>
-              <a href="#portfolio" class="footer__link">Portfolio</a>
-            </li>
-            <li>
-              <a href="#contact" class="footer__link">Contact-Me</a>
-            </li>
-          </ul>
-
-          <div class="footer__socials">
-            <a
-              href="https://www.instagram.com/venkateeshh/"
-              class="footer__social"
-              target="__blank"
-            >
-            <i class="fa-brands fa-instagram"></i>
-            </a>
-
-            <a
-              href="https://twitter.com/Venkateeshhh"
-              target="__blank"
-              class="footer__social"
-            >
-            <i class="fa-brands fa-x-twitter"></i>
-            </a>
-          </div>
+            <p class="footer__copy">&copy; 2025 Karthik U. All rights reserved.</p>
         </div>
-
-        <p class="footer__copy">&#169; Karthik U. All right reserved</p>
-      </div>
     </footer>
 
-    <!--================== SCROLL TOP ==================-->
-    <a href="#" class="scrollup" id="scroll-up">
-      <i class="uil uil-arrow-up scrollup__icon"></i>
+    <!-- SCROLL UP BUTTON -->
+    <a href="#" class="scroll-up" id="scroll-up">
+        <i class="ri-arrow-up-line"></i>
     </a>
 
-    <script type="text/javascript" src="assets/swiper-bundle.min.js"></script>
-    <script src="https://kit.fontawesome.com/2205d59d52.js" crossorigin="anonymous"></script>
-    <script src="assets/ptj.js"></script>
-  </body>
+    <script>
+        // Theme Toggle
+        const themeButton = document.getElementById('theme-button');
+        const darkTheme = 'dark-theme';
+
+        const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light';
+        const getCurrentIcon = () => themeButton.classList.contains('ri-sun-line') ? 'ri-moon-line' : 'ri-sun-line';
+
+        const selectedTheme = localStorage.getItem('selected-theme');
+        const selectedIcon = localStorage.getItem('selected-icon');
+
+        if (selectedTheme) {
+            document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme);
+            themeButton.classList[selectedIcon === 'ri-moon-line' ? 'add' : 'remove']('ri-sun-line');
+        }
+
+        themeButton.addEventListener('click', () => {
+            document.body.classList.toggle(darkTheme);
+            themeButton.classList.toggle('ri-sun-line');
+            
+            localStorage.setItem('selected-theme', getCurrentTheme());
+            localStorage.setItem('selected-icon', getCurrentIcon());
+        });
+
+        // Scroll Up Button
+        const scrollUp = document.getElementById('scroll-up');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY >= 560) {
+                scrollUp.classList.add('show-scroll');
+            } else {
+                scrollUp.classList.remove('show-scroll');
+            }
+        });
+
+        scrollUp.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Active Link
+        const navLinks = document.querySelectorAll('.nav__link');
+        const sections = document.querySelectorAll('section[id]');
+
+        window.addEventListener('scroll', () => {
+            let scrollY = window.pageYOffset;
+
+            sections.forEach((current) => {
+                const sectionHeight = current.offsetHeight;
+                const sectionTop = current.offsetTop - 60;
+                const sectionId = current.getAttribute('id');
+
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    navLinks.forEach((link) => link.classList.remove('active-link'));
+                    document.querySelector(`.nav__link[href="#${sectionId}"]`)?.classList.add('active-link');
+                }
+            });
+        });
+
+        // Qualification Tabs
+        const qualificationButtons = document.querySelectorAll('.qualification__button');
+        qualificationButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                qualificationButtons.forEach(btn => btn.classList.remove('qualification__active'));
+                button.classList.add('qualification__active');
+            });
+        });
+    </script>
+</body>
 </html>
