@@ -76,11 +76,16 @@ revealElements.forEach(el => revealObserver.observe(el));
 const contactForm = document.getElementById('contactForm');
 const toast = document.getElementById('toast');
 const toastMsg = document.getElementById('toastMsg');
+const toastIcon = toast ? toast.querySelector('i') : null;
 let toastTimeout;
 
-function showToast(message) {
+// Default placeholder endpoint — replace with your Formspree form endpoint or set the form's action attribute
+const FORMSPREE_ENDPOINT = contactForm ? (contactForm.getAttribute('action') || 'https://formspree.io/f/your_form_id') : 'https://formspree.io/f/your_form_id';
+
+function showToast(message, success = true) {
     if (!toast || !toastMsg) return;
     toastMsg.textContent = message;
+    if (toastIcon) toastIcon.style.color = success ? 'var(--primary)' : '#e11d48';
     toast.classList.add('show');
     
     // Clear existing timeout if multiple toasts trigger quickly
@@ -88,29 +93,58 @@ function showToast(message) {
     
     toastTimeout = setTimeout(() => {
         toast.classList.remove('show');
-    }, 3000);
+    }, 4000);
 }
 
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    const getVal = (selector) => {
+        const el = contactForm.querySelector(selector);
+        return el ? el.value.trim() : '';
+    };
+
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
-        // Simulate form submission
+
         const btn = contactForm.querySelector('button');
         const originalText = btn ? btn.textContent : '';
-        
+
+        const payload = {
+            name: getVal('#name'),
+            email: getVal('#email'),
+            message: getVal('#message')
+        };
+
         if (btn) {
             btn.textContent = 'Sending...';
             btn.disabled = true;
         }
 
-        setTimeout(() => {
-            showToast('Thanks for contacting Karthik!');
-            contactForm.reset();
+        try {
+            const endpoint = contactForm.getAttribute('action') || FORMSPREE_ENDPOINT;
+            const res = await fetch(endpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
+
+            if (res.ok) {
+                showToast('Thanks for contacting Karthik!', true);
+                contactForm.reset();
+            } else {
+                const data = await res.json().catch(() => null);
+                const errMsg = (data && data.error) ? data.error : 'Failed to send message. Please try again.';
+                showToast(errMsg, false);
+            }
+        } catch (err) {
+            showToast('Network error. Please try again later.', false);
+        } finally {
             if (btn) {
                 btn.textContent = originalText;
                 btn.disabled = false;
             }
-        }, 1500);
+        }
     });
 }
