@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karthik U | Software Developer & Data Scientist</title>
+    <meta name="description" content="Portfolio of Karthik U - BCA Graduate proficient in Full Stack Dev (Java, React, Spring) and Data Science (Python, ML, Scikit-learn).">
+    
+    <!-- Icons (FontAwesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fonts (Google Fonts: Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">Karthik<span>.U</span></a>
+            
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#hero" onclick="toggleMenu()">Home</a></li>
+                    <li><a href="#about" onclick="toggleMenu()">About</a></li>
+                    <li><a href="#skills" onclick="toggleMenu()">Skills</a></li>
+                    <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+                    <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+                    <li><a href="#certifications" onclick="toggleMenu()">Certs</a></li>
+                    <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div style="display: flex; gap: 15px; align-items: center;">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="hamburger" id="hamburger" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero">
+            <div class="hero-content">
+                <h1 class="reveal">Hi, I'm Karthik U.<br><span>Software Dev & Data Scientist</span></h1>
+                <h2 class="reveal" style="transition-delay: 0.1s;">Full Stack Development, Machine Learning, and Predictive Modeling.</h2>
+                <div class="hero-buttons reveal" style="transition-delay: 0.2s;">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                </div>
+            </div>
+            <a href="#about" class="scroll-down">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <div class="about-grid">
+                <div class="about-img-wrapper reveal">
+                    <div class="about-bg-shape"></div>
+                    <!-- Karthik's Photo -->
+                    <img src="https://z-cdn-media.chatglm.cn/files/eab2f613-7344-4ee6-a068-7955455b6777.png?auth_key=1867880021-e4173bd2650a4a24b9d1a95509b9bd85-0-eeffb6d8a62b073296e85043bfc54dfa" alt="Karthik U" class="about-img">
+                </div>
+                <div class="about-text">
+                    <h2 class="section-title reveal">About Me</h2>
+                    <p class="reveal" style="transition-delay: 0.1s;">
+                        Recent BCA graduate with a strong foundation in full-stack development and data science. Completed intensive data science internship at VCodez, gaining hands-on experience with machine learning, data analysis, and predictive modeling.
+                    </p>
+                    <p class="reveal" style="transition-delay: 0.2s;">
+                        Proficient in full-stack technologies through comprehensive FITA Academy coursework. Motivated self-learner with proven ability to quickly master new technologies and deliver results in fast-paced environments.
+                    </p>
+                    <div class="reveal" style="transition-delay: 0.3s;">
+                        <a href="mailto:karthikudayan1@gmail.com" class="btn btn-primary">Download Resume <i class="fas fa-download"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2 class="section-title reveal">Technical Skills</h2>
+            <p class="section-subtitle reveal">Development & Data Science Stack</p>
+            
+            <div class="skills-grid">
+                <!-- Skill 1: Languages -->
+                <div class="skill-card reveal" style="transition-delay: 0.1s;">
+                    <i class="fas fa-code skill-icon"></i>
+                    <h3 class="skill-title">Core Languages</h3>
+                    <p class="skill-list">Python (Pandas, NumPy), Java, JavaScript</p>
+                </div>
+                <!-- Skill 2: Web Development -->
+                <div class="skill-card reveal" style="transition-delay: 0.2s;">
+                    <i class="fab fa-react skill-icon"></i>
+                    <h3 class="skill-title">Web Development</h3>
+                    <p class="skill-list">React.js, Spring Boot, HTML, CSS, Node.js</p>
+                </div>
+                <!-- Skill 3: Data Science & ML -->
+                <div class="skill-card reveal" style="transition-delay: 0.3s;">
+                    <i class="fas fa-brain skill-icon"></i>
+                    <h3 class="skill-title">ML & Data Science</h3>
+                    <p class="skill-list">TensorFlow, Scikit-learn, Streamlit, Plotly, Power BI</p>
+                </div>
+                <!-- Skill 4: Database & Tools -->
+                <div class="skill-card reveal" style="transition-delay: 0.4s;">
+                    <i class="fas fa-database skill-icon"></i>
+                    <h3 class="skill-title">Database & Tools</h3>
+                    <p class="skill-list">MySQL, PL/SQL, Git, GitHub, Excel</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2 class="section-title reveal">Featured Projects</h2>
+            <p class="section-subtitle reveal">ML Algorithms & Full Stack Apps</p>
+
+            <div class="projects-grid">
+                <!-- Project 1: Credit Scoring System -->
+                <div class="project-card reveal" style="transition-delay: 0.1s;">
+                    <img src="https://z-cdn-media.chatglm.cn/files/fa19e054-fe46-4d7d-88a8-665e7019a552.png?auth_key=1867880257-9fea2b246fa84187b815db82dfc3ff06-0-61439d59cb2ee6470bdefcef01d27d18" alt="Credit Scoring System" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">Credit Scoring System</h3>
+                        <p class="project-desc">End-to-end ML application with 90%+ accuracy in default probability prediction. Implemented a 5-factor credit scoring algorithm (300-850 scale) aligned with banking standards, deployed on Streamlit Cloud.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Scikit-learn</span>
+                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">Plotly</span>
+                            <span class="tech-tag">Pandas</span>
+                        </div>
+                        <!-- UPDATED LINKS -->
+                        <div class="project-links">
+                            <a href="https://credit--scoring.streamlit.app/" target="_blank" class="link-icon" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://github.com/Karthik0008/credit.git" target="_blank" class="link-icon" title="Source Code"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Handwritten Digit Recognition -->
+                <div class="project-card reveal" style="transition-delay: 0.2s;">
+                    <img src="https://z-cdn-media.chatglm.cn/files/19b4fc32-cf9b-4d56-ba7f-2ea35e49fb48.png?auth_key=1867880926-a28236b0e1cf493cb81a9e1951ddbeb7-0-fb70f659456ce22c27e177058f153265" alt="Handwritten Digit Recognition" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">Handwritten Digit Recognition</h3>
+                        <p class="project-desc">Developed and trained a CNN using TensorFlow and Keras to recognize handwritten digits from MNIST dataset. Preprocessed and visualized image data for model input, achieving 98% accuracy on test set.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">Keras</span>
+                            <span class="tech-tag">NumPy</span>
+                            <span class="tech-tag">Matplotlib</span>
+                        </div>
+                        <!-- Placeholder Links -->
+                        <div class="project-links">
+                            <a href="#" class="link-icon" title="Source Code"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Saloon Web Application -->
+                <div class="project-card reveal" style="transition-delay: 0.3s;">
+                    <img src="https://z-cdn-media.chatglm.cn/files/15f0502d-2751-45de-84f9-39aed808b693.png?auth_key=1867880926-c76eb720758c4f78a55d7a60cfe92904-0-c23246661721081f13181fd1c944d515" alt="Saloon Web Application" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">Saloon Web Application</h3>
+                        <p class="project-desc">Full-stack salon management application to streamline appointments, services, and customer data. Implemented RESTful APIs for seamless front-end and back-end communication and designed an intuitive UI.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">React.js</span>
+                            <span class="tech-tag">Spring Boot</span>
+                            <span class="tech-tag">MySQL</span>
+                        </div>
+                        <!-- UPDATED LINKS -->
+                        <div class="project-links">
+                            <a href="https://karthik-unique.netlify.app/" target="_blank" class="link-icon" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://github.com/Karthik0008/saloon.git" target="_blank" class="link-icon" title="Source Code"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2 class="section-title reveal">Experience</h2>
+            <p class="section-subtitle reveal">Professional Journey</p>
+
+            <div class="timeline">
+                <!-- Item 1: Internship -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-content">
+                        <span class="timeline-date">09/2025 – 11/2025</span>
+                        <h3 class="timeline-role">Data Science Intern</h3>
+                        <p class="timeline-company">VCODEZ, Chennai</p>
+                        <ul class="timeline-ul">
+                            <li>Gained hands-on experience in data analysis, visualization, and machine learning techniques.</li>
+                            <li>Working with Power BI and Python libraries for data-driven insights.</li>
+                            <li>Developed predictive models to solve real-world business problems.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Item 2: Education -->
+                <div class="timeline-item reveal" style="transition-delay: 0.1s;">
+                    <div class="timeline-content">
+                        <span class="timeline-date">2022 – 2025</span>
+                        <h3 class="timeline-role">Bachelor of Computer Application (BCA)</h3>
+                        <p class="timeline-company">St Thomas College of Arts and Science, Chennai</p>
+                    </div>
+                </div>
+
+                <!-- Item 3: Higher Secondary -->
+                <div class="timeline-item reveal" style="transition-delay: 0.2s;">
+                    <div class="timeline-content">
+                        <span class="timeline-date">2019 – 2022</span>
+                        <h3 class="timeline-role">Higher Secondary (HSE) & SSLC</h3>
+                        <p class="timeline-company">Government Boys Higher Secondary Porur, Chennai</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications">
+            <h2 class="section-title reveal">Certifications</h2>
+            
+            <div class="cert-card reveal">
+                <i class="fas fa-certificate" style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;">Java Full Stack Development</h3>
+                <p style="color: var(--text-muted); margin-bottom: 0.5rem;">FITA Academy, Chennai</p>
+                <p style="font-size: 0.9rem; color: var(--secondary);">Comprehensive training in Java Full Stack development, covering front-end technologies (HTML, CSS, JavaScript, React.js) and back-end frameworks (Java, Spring Boot, MySQL).</p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2 class="section-title reveal">Get In Touch</h2>
+            <p class="section-subtitle reveal">Open for Software Dev and Data Science roles</p>
+
+            <div class="contact-container">
+                <div class="contact-info reveal">
+                    <p style="margin-bottom: 2rem; color: var(--text-muted);">
+                        I am looking for entry-level opportunities in Software Development or Data Science. Feel free to reach out!
+                    </p>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <h4>Email</h4>
+                            <p class="text-muted">karthikudayan1@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                        <div>
+                            <h4>Phone</h4>
+                            <p class="text-muted">9025784894</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <h4>Location</h4>
+                            <p class="text-muted">Chennai, India</p>
+                        </div>
+                    </div>
+
+                    <!-- UPDATED SOCIAL LINKS -->
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/karthikudhyan001/" target="_blank" class="social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/Karthik0008/" target="_blank" class="social-btn" title="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <form class="contact-form reveal" id="contactForm" action="https://formspree.io/f/your_form_id" method="POST">
+                    <div class="form-group">
+                        <label class="form-label" for="name">Name</label>
+                        <input type="text" id="name" class="form-input" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email</label>
+                        <input type="email" id="email" class="form-input" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="message">Message</label>
+                        <textarea id="message" class="form-textarea" rows="5" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="footer-text">&copy; 2025 Karthik U. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Element -->
+    <div id="toast" class="toast">
+        <i class="fas fa-check-circle" style="color: var(--primary);"></i>
+        <span id="toastMsg">Message sent successfully!</span>
+    </div>
+
+    <!-- JavaScript logic (moved to js/script.js) -->
+    <script src="script.js" defer></script>
+</body>
+</html>
